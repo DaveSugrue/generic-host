@@ -5,6 +5,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import java.sql.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,13 +47,17 @@ public class ResponseWrapperTest {
 
 	@Test
 	public void testToString() {
-		Movie movie1 = new Movie(1, "ACTN", "Test Name", "B", "Testing this", 100, "test.jpg", 75);
-		Movie movie2 = new Movie(2, "COMDY", "Test Name 2", "B", "Testing this again", 120, "test2.jpg", 85);
-		resp.addObject(movie1);
-		resp.addObject(movie2);
+		Date dob1, dob2;
+		dob1 = Date.valueOf("1995-05-01");
+		dob2 = Date.valueOf("1996-06-02");
+		User user1 = new User(1l, "John", "Doe", dob1, "john@doe.net", "111111");
+		User user2 = new User(2l, "Jane", "Doe", dob2, "jane@doe.net", "abcdefg");
+		resp.addObject(user1);
+		resp.addObject(user2);
 
+		log.info("resp = " + resp.toString());
 		assertEquals(
-				"ResponseWrapper [status=Status [code=0, messages=[Success]], objects=[Movie [id=1, genreId=ACTN, name=Test Name, format=B, notes=Testing this, duration=100, image=test.jpg, rating=75], Movie [id=2, genreId=COMDY, name=Test Name 2, format=B, notes=Testing this again, duration=120, image=test2.jpg, rating=85]]]",
+				"ResponseWrapper [status=Status [code=0, messages=[Success]], objects=[User [id=1, firstName=John, lastName=Doe, email=john@doe.net, pw=111111, dob=1995-05-01], User [id=2, firstName=Jane, lastName=Doe, email=jane@doe.net, pw=abcdefg, dob=1996-06-02]]]",
 				resp.toString());
 	}
 

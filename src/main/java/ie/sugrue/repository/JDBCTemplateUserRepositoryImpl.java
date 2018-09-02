@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import ie.sugrue.domain.User;
 
 @Repository
-public class MySQLUserRepositoryImpl implements UserRepository {
+public class JDBCTemplateUserRepositoryImpl implements UserRepository {
 
 	private final Logger	log	= LoggerFactory.getLogger(this.getClass());
 	@Autowired
