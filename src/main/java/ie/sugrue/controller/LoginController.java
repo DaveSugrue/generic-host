@@ -17,7 +17,7 @@ import ie.sugrue.service.login.LoginService;
 @RestController
 @RequestMapping("/")
 @Scope("request")
-public class LoginController extends PrimaryController {
+public class LoginController {
 
 	@Autowired
 	ResponseWrapper	resp;

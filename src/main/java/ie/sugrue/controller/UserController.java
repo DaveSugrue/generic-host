@@ -23,7 +23,7 @@ import ie.sugrue.service.user.UpdateUserService;
 @RestController
 @RequestMapping("/users")
 @Scope("request")
-public class UserController extends PrimaryController {
+public class UserController {
 
 	private final Logger	log	= LoggerFactory.getLogger(this.getClass());
 

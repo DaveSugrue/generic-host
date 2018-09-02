@@ -24,7 +24,7 @@ import ie.sugrue.service.movie.UpdateMovieService;
 @RestController
 @RequestMapping("/movies")
 @Scope("request")
-public class MovieController extends PrimaryController {
+public class MovieController {
 
 	private final Logger	log	= LoggerFactory.getLogger(this.getClass());
 
@@ -39,7 +39,7 @@ public class MovieController extends PrimaryController {
 	@Autowired
 	DeleteMovieService		deleteMovieService;
 
-	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseWrapper getMovie(@PathVariable int id) {
 		ResponseWrapper resp2 = getMovieService.getMovie(resp, id);
 		log.info("Called:: /movies/" + id);
@@ -47,7 +47,7 @@ public class MovieController extends PrimaryController {
 		return resp2;
 	}
 
-	@RequestMapping(value="", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseWrapper getMovie(@RequestParam(value = "genreId", defaultValue = "") String genreId) {
 		// If no Category id specified, bring them all back (default)
 		if (genreId.equals("")) {

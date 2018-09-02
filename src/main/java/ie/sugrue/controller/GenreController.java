@@ -23,7 +23,7 @@ import ie.sugrue.service.genre.UpdateGenreService;
 @RestController
 @RequestMapping("/genres")
 @Scope("request")
-public class GenreController extends PrimaryController {
+public class GenreController {
 
 	private final Logger	log	= LoggerFactory.getLogger(this.getClass());
 
@@ -42,7 +42,7 @@ public class GenreController extends PrimaryController {
 	public ResponseWrapper getGenre(@PathVariable String id) {
 		return getGenreService.getGenre(resp, id);
 	}
-	
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseWrapper getGenre() {
 		return getGenreService.getGenres(resp);

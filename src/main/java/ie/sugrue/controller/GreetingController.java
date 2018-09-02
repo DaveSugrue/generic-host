@@ -12,7 +12,7 @@ import ie.sugrue.domain.Greeting;
 @CrossOrigin(origins = "*", maxAge = 3600)
 
 @RestController
-public class GreetingController extends PrimaryController {
+public class GreetingController {
 
 	private static final String	template	= "Hello, %s! How the fuck you doing?";
 	private final AtomicLong	counter		= new AtomicLong();
