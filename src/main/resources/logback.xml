@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n</Pattern>
+		</layout>
+	</appender>
+	<!-- 
+	<appender name="FILE_DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>C:\Logs\Demo\Debug.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>app-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxFileSize>20MB</maxFileSize>		
+			<maxHistory>5</maxHistory>
+			<totalSizeCap>200MB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%msg%n</pattern>
+		</encoder>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{100} - %msg%n</Pattern>
+		</layout>
+	</appender>
+	-->
+	<appender name="FILE_DEBUG" class="ch.qos.logback.core.FileAppender">
+		<file>/share/CACHEDEV1_DATA/.qpkg/Tomcat8/tomcat8/logs/host/debug.log</file>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{100} - %msg%n</Pattern>
+		</layout>
+	</appender>
+	
+	<appender name="FILE_ERROR" class="ch.qos.logback.core.FileAppender">
+		<file>/share/CACHEDEV1_DATA/.qpkg/Tomcat8/tomcat8/logs/host/error.log</file>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{100} - %msg%n</Pattern>
+		</layout>
+	</appender>
+	
+	<logger name="com.base22" level="TRACE"/>
+	
+	<root level="debug">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE_DEBUG" />
+	</root>
+	
+</configuration>
